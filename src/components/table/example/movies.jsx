@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 import ListGroup from "../../listGroup";
 import Table from "../table";
 import Like from "../../like";
 import Pagination from "../../pagination/pagination";
 import { getMovies } from "./services/fakeMovieService";
 import { getGenres } from "./services/fakeGenreService";
-import { paginate } from "../../pagination/paginate"
+import { paginate } from "../../pagination/paginate";
 import _ from "lodash";
-
 
 /*
     Gerekli paketler
@@ -22,12 +22,11 @@ class Movies extends Component {
     genres: [],
     currentPage: 1,
     pageSize: 4,
-    sortColumn: { path: "title", orderAs: "asc" }   
+    sortColumn: { path: "title", orderAs: "asc" }
   };
 
-
   columns = [
-    { path: "title", label: "Title" },
+    { path: "title", label: "Title", content: movie => <Link to={`/movies/${movie._id}`}>{movie.title}</Link> },
     { path: "genre.name", label: "Genre" },
     { path: "numberInStock", label: "Stock" },
     { path: "dailyRentalRate", label: "Rate" },
@@ -91,7 +90,7 @@ class Movies extends Component {
     } = this.state;
 
     const filtered =
-      selectedGenre && selectedGenre._id
+      selectedGenre && selectedGenre._id && (selectedGenre._id != "head")
         ? allMovies.filter(m => m.genre._id === selectedGenre._id)
         : allMovies;
 
@@ -115,7 +114,10 @@ class Movies extends Component {
         <div className="col-3">
           <ListGroup
             items={this.state.genres}
-            selectedItem={this.state.selectedGenre /*selectedItem ve onItemSelect gibi isimlendirmeler uyumlu olmali  .*/}
+            selectedItem={
+              this.state
+                .selectedGenre /*selectedItem ve onItemSelect gibi isimlendirmeler uyumlu olmali  .*/
+            }
             onItemSelect={this.handleGenreSelect}
           />
         </div>
@@ -128,7 +130,9 @@ class Movies extends Component {
             onSort={this.handleSort}
           />
           <Pagination
-            itemsCount={totalCount /*Kac sayfa olacagini belirlemek icin veriyoruz.*/}
+            itemsCount={
+              totalCount /*Kac sayfa olacagini belirlemek icin veriyoruz.*/
+            }
             pageSize={pageSize}
             currentPage={currentPage}
             onPageChange={this.handlePageChange}

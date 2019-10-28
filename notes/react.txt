@@ -1,0 +1,81 @@
+================== KAYNAK ======================
+devam https://codewithmosh.com/courses/357787/lectures/5634560
+bitti https://youtu.be/Ke90Tje7VS0
+
+
+================ VS CODE ==============================
+ Ayu Mirage -> Template
+ Prettier- Code Formatter
+ SFTP
+ Simple React Snippets -> react kisayollar
+ Auto Import - ES6, TS, JSX, TSX
+ 
+
+
+================== INTRODUCTION ======================
+React, bir javascript kütüphanesidir. Facebook tarafindan gelistirilmistir.
+Virtual DOM kullanimi sebebiyle hizlidir.
+
+================== INSTALLATION ======================
+
+ --- Create Application ---
+ sudo npm -i -g create-react-app          //i -> install  g -> global
+ sudo npm -i -g create-react-app@1.5.2    //spesifik versiyon kurmak için
+
+create-react-app appName               //komutu ile react uygulamasi olusturabilirsin.
+
+npm start       //test ortami icin sunucuyu baslatir
+    Degisiklik yaptiginda direkt yansir, hot module reloading..
+npm run build   //production icin derler paketleri
+npm test        //test runner'i calistirir
+npm run eject               //PRODUCTION icin bu tool ve baglantili dosyalari kaldirir
+
+jsx - javascript xml acilimi
+
+npm -i bootstrap        //komutu ile react icin bootstrap indirilir
+import 'bootstrap/dist/css/bootstrap.css'; //ile index.js'e eklenir.
+
+component dosya isimlendirmeleri kucuk harfle baslar ikinci kelime bitisik olarak buyuk harfle yazilir. Dosya icerisindeki fonksiyon ya da class isimlendirmesinde buyuk harfle baslanir.
+
+React Developer Tools browser extension'i react gelistiricileri icin faydali.
+
+state vs props
+    state component icindeki ona ozel verilerdir.
+    props component'e gelen verilerdir ve state'i set etmek icin kullanilabilir. Props baska component'den geldigi icin props'un tum property'leri read-only'dir.
+
+    props gonderirken bir component'in birden fazla component'e veri gonderdigi dusunuldugunde props'a bir component'le ilgili gonderilecek veriler o component isminde bir object icinde toplanabilir.
+
+    single source of truth
+    bir element'teki veri bir yerden (komponent'ten degismeli) diger yerlerden event le set edilmeli. Ana ve cocuk component'ler arasindaki iliski'de buna rastlanir. Children'dan uste fonksiyon cagirma olmayacagi? icin veri kontrolu uste tasinir. Boyle cocuk component'lere Controlled Component denir.
+
+component lifecycles
+    mount'da sirasiyla -> constructor, render, componentDidMount cagrilir.
+    update'de sirasiyla -> render, componentDidUpdate cagrilir.
+        componentDidMount ile degisiklik varsa sunucuya ajax call yapilabilir ornegin.
+    unmount'sa ise -> componentWillUnmount cagrilir.
+ipuclari
+  desctructing kullanimi, bir fonksiyona gelen parametre props{ title: "deneme"} seklinde geliyorsa alt tarafta surekli p.title dememek icin ({title}) => {} olarak tanimlanmali.
+
+prop-types isimli npm paketi prop'larin tiplerini kontrole zorlayarak olasi hatalarin onune gecmemize yardimci olur.    
+
+
+---- NPM PACKAGES ----------------------------
+bootstrap
+font-awesome
+lodash"
+prop-types
+react-router-dom  -> web routing icin
+react-router-native  -> mobil app icin
+query-string  ->   linspark.com?id=3&sortBy=asc gibi search ifadelerinin islenmesi icin kullanilan bir kutuphane.
+
+
+
+===================== TESTING ==================================
+
+
+==== BUILD =====
+npm run build
+serve -s build/         //ile lokalde server olusturulur.
+
+heroku cli indir
+mongo db'yi cloud'a yuklemek icin mlab.com kullanilabilir.
