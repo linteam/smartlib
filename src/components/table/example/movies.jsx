@@ -1,21 +1,14 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
-import ListGroup from "../../listGroup";
+import ListGroup from "../../common/listGroup";
 import Table from "../table";
-import Like from "../../like";
+import Like from "../../common/like";
 import Pagination from "../../pagination/pagination";
 import { getMovies } from "./services/fakeMovieService";
 import { getGenres } from "./services/fakeGenreService";
 import { paginate } from "../../pagination/paginate";
 import _ from "lodash";
 
-/*
-    Gerekli paketler
-    "bootstrap": "^4.1.1",
-    "font-awesome": "^4.7.0",
-    "lodash": "^4.17.10",
-    "prop-types": "15.7.2",
-*/
 class Movies extends Component {
   state = {
     movies: [],
@@ -50,8 +43,8 @@ class Movies extends Component {
   ];
 
   componentDidMount() {
+    let search = this.props.location.search;
     const genres = [{ _id: "head", name: "All Genres" }, ...getGenres()];
-
     this.setState({ movies: getMovies(), genres });
   }
 
@@ -122,6 +115,7 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
+          <Link className="btn btn-primary" to="/movies/new">Add Movie</Link>
           <p>Showing {totalCount} movies in the database.</p>
           <Table
             columns={this.columns}

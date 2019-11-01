@@ -58,6 +58,7 @@ ipuclari
 
 prop-types isimli npm paketi prop'larin tiplerini kontrole zorlayarak olasi hatalarin onune gecmemize yardimci olur.    
 
+react'da document'i kullanmayiz, cunku DOM ile abstraction olmasi temel mantik. DOM'a ulasmak gerektiginde React'taki Refs'leri kullaniriz.
 
 ---- NPM PACKAGES ----------------------------
 bootstrap
@@ -67,7 +68,7 @@ prop-types
 react-router-dom  -> web routing icin
 react-router-native  -> mobil app icin
 query-string  ->   linspark.com?id=3&sortBy=asc gibi search ifadelerinin islenmesi icin kullanilan bir kutuphane.
-
+joi-browser -> form input validation kutuphanesinin browser icin derlenmis hali.
 
 
 ===================== TESTING ==================================
