@@ -44,10 +44,13 @@ class Movies extends Component {
   ];
 
   componentDidMount() {
+    //GET parametresi ile yeni film ekleme
     let search = this.props.location.search;
     const { m } = queryString.parse(search);
-    let newMovie = JSON.parse(m);
-    saveMovie(newMovie);
+    if(m){
+        let newMovie = JSON.parse(m);
+        saveMovie(newMovie);
+    }
 
     /* {"title":"asd","genre":"5b21ca3eeb7f6fbccd471814","numberInStock":"2","dailyRentalRate":"2"}*/
     const genres = [{ _id: "head", name: "All Genres" }, ...getGenres()];
