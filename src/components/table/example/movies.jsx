@@ -4,9 +4,10 @@ import ListGroup from "../../common/listGroup";
 import Table from "../table";
 import Like from "../../common/like";
 import Pagination from "../../pagination/pagination";
-import { getMovies } from "./services/fakeMovieService";
+import { getMovies, saveMovie } from "./services/fakeMovieService";
 import { getGenres } from "./services/fakeGenreService";
 import { paginate } from "../../pagination/paginate";
+import queryString from 'query-string';
 import _ from "lodash";
 
 class Movies extends Component {
@@ -44,6 +45,11 @@ class Movies extends Component {
 
   componentDidMount() {
     let search = this.props.location.search;
+    const { m } = queryString.parse(search);
+    let newMovie = JSON.parse(m);
+    saveMovie(newMovie);
+
+    /* {"title":"asd","genre":"5b21ca3eeb7f6fbccd471814","numberInStock":"2","dailyRentalRate":"2"}*/
     const genres = [{ _id: "head", name: "All Genres" }, ...getGenres()];
     this.setState({ movies: getMovies(), genres });
   }

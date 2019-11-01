@@ -5,7 +5,7 @@ import Joi from 'joi-browser';
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", genre: "", numberInStock: "", rate: "" },
+    data: { title: "", genreId: "", numberInStock: "", dailyRentalRate: "" },
     errors: {},
     genres: []
   };
@@ -15,16 +15,16 @@ class MovieForm extends Form {
   constructor(){
     super();
     let genres = [{ _id: "head", name: "All Genres" }, ...getGenres()];
-    this.state.genres = genres.map(g => { return {value: g._id, text: g.name }});       
+    this.state.genres = genres.map(g => { return {value: g._id, text: g.name }});
     //this.setState({genres: genres});
     this.schema["numberInStock"] = Joi.number().required().max(100).min(0).label("Number in Stock");
-    this.schema['rate'] = Joi.number().required().min(0).max(10).label("Rate");
+    this.schema['dailyRentalRate'] = Joi.number().required().min(0).max(10).label("Rate");
   }
- 
+
   componentDidMount(){
     console.log(this.schema);
-  }  
-  
+  }
+
   doSubmit = () => {
     console.log("Call the server");
   };
@@ -38,23 +38,23 @@ class MovieForm extends Form {
   "numberInStock": "34",
   "rate": "6.8"
 }*/
-    
+
     this.props.history.push(address);
   };
 
   render() {
-    let { match } = this.props;    
+    let { match } = this.props;
     return (
       <div>
         <h1>MovieForm {match.params.id === "new" ? "" : match.params.id}</h1>
         <form onSubmit={this.submitHandler}>
           {this.renderInput("title", "Title", { autoFocus: true })}
-          {this.renderDropDownList("genre", "Genre",
+          {this.renderDropDownList("genreId", "Genre",
           this.state.genres)}
           {this.renderInput("numberInStock", "Number in Stock")}
-          {this.renderInput("rate", "Rate")}
+          {this.renderInput("dailyRentalRate", "Rate")}
           {this.renderButton("Save", this.handleSave)}
-        </form>      
+        </form>
       </div>
     );
   }
