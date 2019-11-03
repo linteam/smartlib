@@ -1,5 +1,4 @@
 import React from "react";
-import { is } from "@babel/types";
 
 const Input = ({name, label, error, ...rest}) => {
   return (
