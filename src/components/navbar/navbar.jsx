@@ -45,7 +45,12 @@ const Navbar = () => {
               Register
             </NavLink>
           </li>
-         
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/http-example">
+              HTTP Example
+            </NavLink>
+          </li>
+
         </ul>
       </div>
     </nav>

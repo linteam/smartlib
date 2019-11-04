@@ -9,6 +9,7 @@ import MovieForm from './components/form/example/movieForm';
 import LoginForm from './components/form/example/loginForm';
 import "./App.css";
 import RegisterForm from './components/form/example/registerForm';
+import HttpExample from './services/example/httpExample';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/customers" component={Customers}></Route>
           <Route path="/rentals" component={Rentals}></Route>
           <Route path="/not-found" component={NotFound}></Route>
+          <Route path="/http-example" component={HttpExample}></Route>
           <Redirect exact from="/" to="/movies" />
           <Redirect to="/not-found" />
         </Switch>

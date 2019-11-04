@@ -9,7 +9,7 @@ bitti https://youtu.be/Ke90Tje7VS0
  SFTP
  Simple React Snippets -> react kisayollar
  Auto Import - ES6, TS, JSX, TSX
- 
+
 
 
 ================== INTRODUCTION ======================
@@ -56,19 +56,45 @@ component lifecycles
 ipuclari
   desctructing kullanimi, bir fonksiyona gelen parametre props{ title: "deneme"} seklinde geliyorsa alt tarafta surekli p.title dememek icin ({title}) => {} olarak tanimlanmali.
 
-prop-types isimli npm paketi prop'larin tiplerini kontrole zorlayarak olasi hatalarin onune gecmemize yardimci olur.    
+prop-types isimli npm paketi prop'larin tiplerini kontrole zorlayarak olasi hatalarin onune gecmemize yardimci olur.
 
 react'da document'i kullanmayiz, cunku DOM ile abstraction olmasi temel mantik. DOM'a ulasmak gerektiginde React'taki Refs'leri kullaniriz.
 
 ---- NPM PACKAGES ----------------------------
 bootstrap
 font-awesome
-lodash"
-prop-types
+lodash -> object ve dizileri islemek icin
+prop-types -> prop'larin tiplerini kontrole zorlayarak olasi hatalarin onune gecmemize yardimci olur.
 react-router-dom  -> web routing icin
 react-router-native  -> mobil app icin
 query-string  ->   linspark.com?id=3&sortBy=asc gibi search ifadelerinin islenmesi icin kullanilan bir kutuphane.
 joi-browser -> form input validation kutuphanesinin browser icin derlenmis hali.
+react-toastify -> gorsel olarak guzel uyari mesajlari icin
+
+------- LOGGING ---------------
+https://sentry.io/  loglama servisi ucretli
+
+
+
+----------- DATABASE -------------------------
+sudo apt update
+sudo apt install -y mongodb
+sudo systemctl status mongodb       //servisin calisip calismadigina bakiyor
+mongo --eval 'db.runCommand({ connectionStatus: 1 })'   //bu test komutu ile de bakabiliriz calisiyor mu diye
+
+sudo systemctl stop mongodb
+sudo systemctl start mongodb
+sudo systemctl restart mongodb
+sudo systemctl disable mongodb
+sudo systemctl enable mongodb
+
+cat /etc/mongodb.conf | grep dbpath     //Config dosyasindan data dosya yoluna bakabilirsin.
+//Daemon icin ayri bir directory gerekiyor...
+sudo mkdir -p /data/db
+sudo chown -R `id -un` /data/db
+mongod              //komutu ile mongo daemon baslatilir. 27017
+sudo lsof -iTCP -sTCP:LISTEN -n -P          //komutu ile port kullanimina bakilabilir.
+
 
 
 ===================== TESTING ==================================
