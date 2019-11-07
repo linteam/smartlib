@@ -51,7 +51,6 @@ class Movies extends Component {
         }
     ];
 
-    genres= getGenres();
     async componentDidMount() {
         let {data : genres} = await getGenres();
         /* {"title":"asd","genre":"5b21ca3eeb7f6fbccd471814","numberInStock":"2","dailyRentalRate":"2"}*/
