@@ -10,8 +10,8 @@ const ListGroup = ({
 
   const checkSelected = (item) => {
       let className = " ";   
-      if(selectedItem == null && item["_id"] == "head") {className += "active"}
-      if(selectedItem == item) { className += "active"}
+      if(selectedItem === null && item["_id"] === "head") {className += "active"}
+      if(selectedItem === item) { className += "active"}
       return className;
   };
 

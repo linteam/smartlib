@@ -4,7 +4,7 @@ import logger from "./logService";
 
 axios.interceptors.response.use(
   success => {
-    console.log("Success Interceptor can be used for auditing");
+    //console.log("Success Interceptor can be used for auditing");
     return Promise.resolve(success);
   },
   error => {
@@ -22,10 +22,16 @@ axios.interceptors.response.use(
   }
 );
 
+function setJwt(jwt) {
+  //axios.defaults.headers.post  --> sadece post isteginde header'a ekler.
+  axios.defaults.headers.common["x-auth-token"] = jwt;
+}
+
 export default {
   get: axios.get,
   post: axios.post,
   put: axios.put,
   patch: axios.patch,
-  delete: axios.delete
+  delete: axios.delete,
+  setJwt
 };
